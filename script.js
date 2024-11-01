@@ -12,12 +12,10 @@ async function checkPoints() {
         return;
     }
 
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-
     for (let address of addresses) {
         try {
-            const apiUrl = `https://trailblazer.mainnet.taiko.xyz/s2/user/rank?address=${address}`;
-            const response = await fetch(proxyUrl + apiUrl);
+            const proxyUrl = `/api/proxy?address=${address}`;
+            const response = await fetch(proxyUrl);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
